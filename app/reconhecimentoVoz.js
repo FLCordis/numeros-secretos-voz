@@ -10,11 +10,11 @@ recognition.addEventListener('result', onSpeak);
 
 function onSpeak(e){
     chute = e.results[0][0].transcript
-    exiteTentativa(chute);
+    exibeTentativa(chute);
     validacaoChute(chute);
 }
 
-function exiteTentativa(chute){
+function exibeTentativa(chute){
     elementoChute.innerHTML = `
         <div>Você disse</div>
         <span class="box">${chute}</span>

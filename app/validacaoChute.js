@@ -2,8 +2,23 @@ function validacaoChute(chute){
     const numero = +chute;
 
     if(chuteInvalido(numero)){
-        elementoChute.innerHTML += '<div>Valor Inválido: Não é um número. </div>';
-        return
+
+        if (chute.toUpperCase() === 'GAME OVER'){
+
+            document.body.innerHTML = `
+            <h2>Game Over!</h2>
+            <h3>O número secreto era ${numeroSecreto}</h3>
+    
+            <button id="jogar-novamente" class ="btn-restart">Jogar novamente!</button>
+            `
+
+            document.body.style.backgroundColor = "var(--game-over)";
+            return
+        }else{
+            
+            elementoChute.innerHTML += '<div>Valor Inválido: Não é um número. </div>';
+            return
+        }
     }
 
     if (numeroForaAlcance(numero)) {
@@ -11,6 +26,7 @@ function validacaoChute(chute){
         <div>Valor inválido: Fora do valor de ${menorValor} e ${maiorValor}</div>`;
         return
     }
+
 
     if(numero === numeroSecreto){
         document.body.innerHTML = `
@@ -29,6 +45,7 @@ function validacaoChute(chute){
         `
     }
 }
+
 
 function chuteInvalido(numero) {
     return Number.isNaN(numero);
